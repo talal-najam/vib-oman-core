@@ -1,0 +1,6 @@
+node_modules
+.env
+migrations/*
+seeds/*
+!seeds/.gitkeep
+!migrations/.gitkeep
