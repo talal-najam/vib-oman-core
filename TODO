@@ -3,3 +3,7 @@ setup ci cd - github actions / travis CI
 setup those numbers of repo
 have a nice readme
 
+DB:
+    - use order_status_id instead with another table
+    - try to normalize more and split data into more tables for customizability
+    - integrate steamid in users profile for gaming features
