@@ -7,3 +7,5 @@ DB:
     - use order_status_id instead with another table
     - try to normalize more and split data into more tables for customizability
     - integrate steamid in users profile for gaming features
+    - Add cart - refer to fake api - https://fakestoreapi.com/carts
+    - Complete orders functionality

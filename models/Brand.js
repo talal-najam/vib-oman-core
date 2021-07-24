@@ -1,9 +1,9 @@
 import { Model } from 'objection';
 
-class Order extends Model {
+class Brand extends Model {
   static get tableName() {
-    return "orders";
+    return "brands";
   }
 }
 
-export default Order;
+export default Brand;
