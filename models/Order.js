@@ -2,9 +2,9 @@ import { Model } from 'objection';
 import bcrypt from 'bcryptjs'
 import Product from './Product';
 
-class User extends Model {
+class Order extends Model {
   static get tableName() {
-    return "users";
+    return "orders";
   }
 
   static relationMappings = {
@@ -19,4 +19,4 @@ class User extends Model {
   }
 }
 
-export default User;
+export default Order;
