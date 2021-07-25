@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("users").insert([
         {
-          id: 1,
+          id: 1111,
           first_name: "Talal",
           last_name: "Najam",
           email: "talalnajam98@gmail.com",
@@ -18,7 +18,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 2,
+          id: 2222,
           first_name: "Anas",
           last_name: "Mukaddam",
           email: "anas.mukaddam@viboman.com",
@@ -30,7 +30,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 3,
+          id: 3333,
           first_name: "Farhan",
           last_name: "Nadir",
           email: "farhan.nadir@noob.com",

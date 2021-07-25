@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("categories").insert([
         {
-          id: 1,
+          id: 1111,
           name: "Gaming PCs",
           image: "",
           description: "Fully powered gaming RIGs",
@@ -14,7 +14,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 2,
+          id: 2222,
           name: "Monitors",
           image: "",
           description: "Gaming monitors for the ultimate experience",
@@ -22,7 +22,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 3,
+          id: 3333,
           name: "Peripherals",
           image: "",
           description: "Keyboards, Mouse, Headphones etc.",
@@ -30,7 +30,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 4,
+          id: 4444,
           name: "Gaming Chairs",
           image: "",
           description: "A gamer's throne!",
@@ -38,7 +38,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 5,
+          id: 5555,
           name: "Components",
           image: "",
           description: "PC components sold separately for ultimate flexibility",
@@ -46,7 +46,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 6,
+          id: 6666,
           name: "Software",
           image: "",
           description: "Browse the list of latest software and games",

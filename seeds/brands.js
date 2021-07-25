@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("brands").insert([
         {
-          id: 1,
+          id: 1111,
           name: "Razer",
           image:
             "https://logos-world.net/wp-content/uploads/2020/11/Razer-Symbol.jpg",
@@ -16,7 +16,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 2,
+          id: 2222,
           name: "MSI",
           image: "https://i.ytimg.com/vi/Qt0GFuslOjk/maxresdefault.jpg",
           description:
@@ -25,7 +25,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 3,
+          id: 3333,
           name: "Zotac",
           image:
             "https://static.wikia.nocookie.net/pcbuildingsim/images/f/f1/Zotac-Logo-1-1500x1000.jpg/revision/latest?cb=20181217044421",
@@ -35,7 +35,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 4,
+          id: 4444,
           name: "ASUS",
           image:
             "https://logos-world.net/wp-content/uploads/2020/07/Asus-Logo-1995-present.png",
@@ -45,7 +45,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 5,
+          id: 5555,
           name: "ROG",
           image: "https://i.ibb.co/WPtzVv8/ROG.png",
           description:
@@ -54,7 +54,7 @@ exports.seed = function (knex) {
           updated_at: new Date(),
         },
         {
-          id: 6,
+          id: 6666,
           name: "HyperX",
           image:
             "https://images.squarespace-cdn.com/content/v1/55ef0e29e4b099e22cdc9eea/1547055341193-QDPQU3CUS16CTZO2MK52/hyperx-logo.jpg",

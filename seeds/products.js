@@ -6,7 +6,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("products").insert([
         {
-          id: 1,
+          id: 1111,
           name: "Blackwidow V3 Mini Hyperspeed",
           small_image:
             "https://assets2.razerzone.com/images/pnx.assets/b741a04759a128fc7431f83e3ff9472b/razer-blackwidow-v3-mini-hyperspeed_ogimage-1200x630.jpg",
@@ -25,10 +25,10 @@ exports.seed = function (knex) {
           featured: false,
           created_at: new Date(),
           updated_at: new Date(),
-          brand_id: 1,
+          brand_id: 1111,
         },
         {
-          id: 2,
+          id: 2222,
           name: "Huntsman Mini",
           small_image:
             "https://assets3.razerzone.com/RpUeXnt4tNXUKhKXFgAECtspNSE=/1500x1000/https%3A%2F%2Fhybrismediaprod.blob.core.windows.net%2Fsys-master-phoenix-images-container%2Fhbc%2Fhe8%2F9081238388766%2Fhuntsman-mini-black-1.jpg",
@@ -46,10 +46,10 @@ exports.seed = function (knex) {
           featured: false,
           created_at: new Date(),
           updated_at: new Date(),
-          brand_id: 1,
+          brand_id: 1111,
         },
         {
-          id: 3,
+          id: 3333,
           name: "Optix MAG272QR",
           small_image:
             "https://asset.msi.com/resize/image/global/product/product_0_20190816025709_5d561b853090d.png62405b38c58fe0f07fcef2367d8a9ba1/600.png",
@@ -68,10 +68,10 @@ exports.seed = function (knex) {
           featured: false,
           created_at: new Date(),
           updated_at: new Date(),
-          brand_id: 2,
+          brand_id: 2222,
         },
         {
-          id: 4,
+          id: 4444,
           name: "Cloud Alpha",
           small_image:
             "https://asset.msi.com/resize/image/global/product/product_0_20190816025709_5d561b853090d.png62405b38c58fe0f07fcef2367d8a9ba1/600.png",
@@ -89,7 +89,7 @@ exports.seed = function (knex) {
           featured: false,
           created_at: new Date(),
           updated_at: new Date(),
-          brand_id: 6,
+          brand_id: 6666,
         },
       ]);
     });
