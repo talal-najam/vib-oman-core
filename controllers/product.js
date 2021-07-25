@@ -16,7 +16,7 @@ export const getProducts = asyncHandler(async (req, res) => {
 
     return res.json(products);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -34,9 +34,9 @@ export const getProductById = asyncHandler(async (req, res) => {
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
-    res.json(product);
+    return res.json(product);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -58,12 +58,10 @@ export const createProduct = asyncHandler(async (req, res) => {
       brand_id: req.body.brandId,
     };
 
-     //validation here
     const result = await Product.query().insert(newProduct);
     return res.json(result);
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });
 
@@ -78,8 +76,7 @@ export const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.query().findById(productId);
 
   if (!product) {
-    res.status(404);
-    return res.json({ error: "Product not found" });
+    return res.status(404).json({ error: "Product not found" });
   }
 
   const productName = product.name;
@@ -97,6 +94,28 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 export const updateProduct = asyncHandler(async (req, res) => {
   const { id } = req.params;
 
+  const updatedProduct = {};
+
+  const {
+    name,
+    smallImage,
+    isActive,
+    unitPrice,
+    unitCount,
+    shortDescription,
+    featured,
+    brandId,
+  } = req.body;
+
+  if (name) updatedProduct.name = name;
+  if (smallImage) updatedProduct.small_image = smallImage;
+  if (isActive) updatedProduct.is_active = isActive;
+  if (unitPrice) updatedProduct.unit_price = unitPrice;
+  if (unitCount) updatedProduct.unit_count = unitCount;
+  if (shortDescription) updatedProduct.short_description = shortDescription;
+  if (featured) updatedProduct.featured = featured;
+  if (brandId) updatedProduct.brand_id = brandId;
+
   try {
     // probably unnecessary
     const product = await Product.query().findById(id);
@@ -105,10 +124,13 @@ export const updateProduct = asyncHandler(async (req, res) => {
     }
 
     // need validation before passing in the object to update
-    const updatedItem = await Product.query().patchAndFetchById(id, req.body);
+    const updatedItem = await Product.query().patchAndFetchById(
+      id,
+      updatedProduct
+    );
 
-    res.json(updatedItem);
+    return res.json(updatedItem);
   } catch (err) {
-    res.status(500).json(err);
+    return res.status(500).json(err);
   }
 });

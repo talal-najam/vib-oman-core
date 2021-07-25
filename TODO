@@ -9,3 +9,13 @@ DB:
     - integrate steamid in users profile for gaming features
     - Add cart - refer to fake api - https://fakestoreapi.com/carts
     - Complete orders functionality
+
+folder structure:
+    - cleanup server.js, move create db to another file
+    - move knexfile to the db folder
+
+- reviews
+- posts
+- leaderboard
+- discord integration
+- validation for new product and update product

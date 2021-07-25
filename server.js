@@ -4,6 +4,7 @@ import Knex from "knex";
 import knexConfig from "./knexfile";
 import morgan from "morgan";
 import productRoutes from "./routes/products";
+import brandRoutes from "./routes/brands";
 import dotenv from "dotenv";
 import "colors";
 
@@ -28,6 +29,8 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
+app.use("/api/brands", brandRoutes);
+
 
 const PORT = process.env.API_PORT || 5000;
 
