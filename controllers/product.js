@@ -83,7 +83,7 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 
   await Product.query().deleteById(productId);
 
-  return res.json({ message: `${productName} successfully deleted` });
+  return res.json({ message: `Product: ${productName} successfully deleted` });
 });
 
 /**

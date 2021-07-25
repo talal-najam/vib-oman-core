@@ -7,19 +7,18 @@ import {
   updateBrand,
 } from "../controllers/brand";
 import {
-  createBrandValidation,
-  updateBrandValidation,
-} from "../validation/brands";
+  createGenericValidation,
+  updateGenericValidation,
+} from "../validation";
 
 const router = express.Router();
 
-router.route("/").get(getBrands).post(createBrandValidation, createBrand);
+router.route("/").get(getBrands).post(createGenericValidation, createBrand);
 
-// TOOD: add update validation
 router
   .route("/:id")
   .get(getBrandById)
   .delete(deleteBrand)
-  .put(updateBrandValidation, updateBrand);
+  .put(updateGenericValidation, updateBrand);
 
 export default router;

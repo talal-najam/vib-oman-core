@@ -80,7 +80,7 @@ export const deleteBrand = asyncHandler(async (req, res) => {
 
   await Brand.query().deleteById(brandId);
 
-  return res.json({ message: `${brandName} successfully deleted` });
+  return res.json({ message: `Brand: ${brandName} successfully deleted` });
 });
 
 /**

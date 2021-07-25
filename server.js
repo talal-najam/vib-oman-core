@@ -3,10 +3,14 @@ import { Model } from "objection";
 import Knex from "knex";
 import knexConfig from "./knexfile";
 import morgan from "morgan";
-import productRoutes from "./routes/products";
-import brandRoutes from "./routes/brands";
 import dotenv from "dotenv";
 import "colors";
+
+// improve routes from index.js
+import productRoutes from "./routes/products";
+import brandRoutes from "./routes/brands";
+import categoryRoutes from "./routes/categories";
+
 
 dotenv.config();
 
@@ -30,6 +34,7 @@ app.use(express.json());
 
 app.use("/api/products", productRoutes);
 app.use("/api/brands", brandRoutes);
+app.use("/api/categories", categoryRoutes);
 
 
 const PORT = process.env.API_PORT || 5000;
