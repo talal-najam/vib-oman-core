@@ -7,8 +7,17 @@ import Product from "../models/Product";
  * @access  Public
  */
 export const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.query();
-  return res.json(products);
+  try {
+    const products = await Product.query();
+
+    if (!products) {
+      return res.status(404).json({ error: "Products not found" });
+    }
+
+    return res.json(products);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 /**
@@ -17,14 +26,18 @@ export const getProducts = asyncHandler(async (req, res) => {
  * @access  Public
  */
 export const getProductById = asyncHandler(async (req, res) => {
-  const product = await Product.query().findById(req.params.id);
+  const { id } = req.params;
 
-  if (!product) {
-    res.status(404);
-    return res.json({ error: "Product not found" });
+  try {
+    const product = await Product.query().findById(id);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    res.json(product);
+  } catch (err) {
+    res.status(500).json(err);
   }
-
-  res.json(product);
 });
 
 /**
@@ -33,16 +46,25 @@ export const getProductById = asyncHandler(async (req, res) => {
  * @access  Private/Admin
  */
 export const createProduct = asyncHandler(async (req, res) => {
-  const product = {
-    name: "Something",
-    image: "no image",
-    brand: "Loreal",
-    count_in_stock: 3,
-  };
+  try {
+    const newProduct = {
+      name: req.body.name,
+      small_image: req.body.smallImage,
+      is_active: req.body.isActive,
+      unit_price: req.body.unitPrice,
+      unit_count: req.body.unitCount,
+      short_description: req.body.shortDescription,
+      featured: req.body.featured,
+      brand_id: req.body.brandId,
+    };
 
-  const newProduct = await Product.query().insert(product);
-
-  return res.json(newProduct);
+     //validation here
+    const result = await Product.query().insert(newProduct);
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 /**
@@ -60,43 +82,33 @@ export const deleteProduct = asyncHandler(async (req, res) => {
     return res.json({ error: "Product not found" });
   }
 
-  const numDeleted = await Product.query().deleteById(productId);
+  const productName = product.name;
 
-  return res.json(numDeleted);
+  await Product.query().deleteById(productId);
+
+  return res.json({ message: `${productName} successfully deleted` });
 });
 
 /**
- * @desc    Update a single product
+ * @desc    Update a product
  * @route   PUT /api/products/:id
  * @access  Private/Admin
  */
 export const updateProduct = asyncHandler(async (req, res) => {
-    // TODO: Implement functionality
-    // const {
-    //   name,
-    //   price,
-    //   description,
-    //   image,
-    //   brand,
-    //   category,
-    //   countInStock,
-    // } = req.body
-  
-    // const product = await Product.findById(req.params.id)
-  
-    // if (product) {
-    //   product.name = name
-    //   product.price = price
-    //   product.description = description
-    //   product.image = image
-    //   product.brand = brand
-    //   product.category = category
-    //   product.countInStock = countInStock
-  
-    //   const updatedProduct = await product.save()
-    //   res.json(updatedProduct)
-    // } else {
-    //   res.status(404)
-    // //   throw new Error('Product not found')
-    // }
-  })
+  const { id } = req.params;
+
+  try {
+    // probably unnecessary
+    const product = await Product.query().findById(id);
+    if (!product) {
+      res.status(404).json({ error: "Product not found" });
+    }
+
+    // need validation before passing in the object to update
+    const updatedItem = await Product.query().patchAndFetchById(id, req.body);
+
+    res.json(updatedItem);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
