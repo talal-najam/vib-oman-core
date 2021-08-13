@@ -8,7 +8,6 @@ const MAX_DESC_LENGTH = 250;
 export const createGenericValidation = [
   check("name")
     .trim()
-    .escape()
     .not()
     .isEmpty()
     .withMessage("Name can not be empty!")

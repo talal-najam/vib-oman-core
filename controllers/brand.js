@@ -53,6 +53,8 @@ export const createBrand = asyncHandler(async (req, res) => {
     image,
     description,
   };
+
+  console.log('New Brand', newBrand);
   
   try {
     const result = await Brand.query().insert(newBrand);

@@ -3,7 +3,6 @@ const { check, validationResult } = require("express-validator");
 export const createProductValidation = [
   check("name")
     .trim()
-    .escape()
     .not()
     .isEmpty()
     .withMessage("Product name can not be empty!")
@@ -12,7 +11,6 @@ export const createProductValidation = [
     .withMessage("Minimum 3 characters required!"),
   check("isActive")
     .trim()
-    .escape()
     .not()
     .isEmpty()
     .withMessage("Please specify if the product is active or not")
@@ -20,13 +18,11 @@ export const createProductValidation = [
     .withMessage("Is Active is not a boolean"),
   check("unitPrice")
     .trim()
-    .escape()
     .not()
     .isEmpty()
     .withMessage("Product unit price can not be empty!"),
   check("unitCount")
     .trim()
-    .escape()
     .not()
     .isEmpty()
     .withMessage("Product unit count can not be empty!")
