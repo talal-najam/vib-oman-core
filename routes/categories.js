@@ -5,6 +5,7 @@ import {
   createCategory,
   deleteCategory,
   updateCategory,
+  deleteMultipleCategories,
 } from "../controllers/category";
 import {
   createGenericValidation,
@@ -17,6 +18,8 @@ router
   .route("/")
   .get(getCategories)
   .post(createGenericValidation, createCategory);
+
+router.route("/deleteMany").delete(deleteMultipleCategories);
 
 router
   .route("/:id")

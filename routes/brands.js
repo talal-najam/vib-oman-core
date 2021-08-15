@@ -5,6 +5,7 @@ import {
   createBrand,
   deleteBrand,
   updateBrand,
+  deleteMultipleBrands,
 } from "../controllers/brand";
 import {
   createGenericValidation,
@@ -14,6 +15,8 @@ import {
 const router = express.Router();
 
 router.route("/").get(getBrands).post(createGenericValidation, createBrand);
+
+router.route("/deleteMany").delete(deleteMultipleBrands);
 
 router
   .route("/:id")

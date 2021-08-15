@@ -47,20 +47,35 @@ export const getBrandById = asyncHandler(async (req, res) => {
  */
 export const createBrand = asyncHandler(async (req, res) => {
   const { name, image, description } = req.body;
-  
+
   const newBrand = {
     name,
     image,
     description,
   };
 
-  console.log('New Brand', newBrand);
-  
   try {
     const result = await Brand.query().insert(newBrand);
     return res.json(result);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+/**
+ * @desc    Delete multiple brands by ID
+ * @route   DELETE /api/brands/deleteMany
+ * @access  Private/Admin
+ */
+export const deleteMultipleBrands = asyncHandler(async (req, res) => {
+  const { ids } = req.body;
+  try {
+    await Brand.query().delete().where("id", "IN", ids);
+    return res.json({
+      message: `Brands successfully deleted`,
+    });
+  } catch (err) {
+    return res.status(500).json({ err: poop });
   }
 });
 
@@ -95,11 +110,7 @@ export const updateBrand = asyncHandler(async (req, res) => {
 
   const updatedBrand = {};
 
-  const {
-    name,
-    image,
-    description,
-  } = req.body;
+  const { name, image, description } = req.body;
 
   if (name) updatedBrand.name = name;
   if (image) updatedBrand.image = image;
@@ -112,12 +123,9 @@ export const updateBrand = asyncHandler(async (req, res) => {
       res.status(404).json({ error: "Brand not found" });
     }
 
-    const updatedItem = await Brand.query().patchAndFetchById(
-      id,
-      updatedBrand
-    );
+    const updatedItem = await Brand.query().patchAndFetchById(id, updatedBrand);
 
-    return res.json(updatedItem); 
+    return res.json(updatedItem);
   } catch (err) {
     return res.status(500).json(err);
   }

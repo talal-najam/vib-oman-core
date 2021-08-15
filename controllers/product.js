@@ -1,3 +1,4 @@
+import expressAsyncHandler from "express-async-handler";
 import asyncHandler from "express-async-handler";
 import Product from "../models/Product";
 
@@ -8,14 +9,28 @@ import Product from "../models/Product";
  */
 export const getProducts = asyncHandler(async (req, res) => {
   try {
-    const products = await Product.query();
+    const pagination = req.query.pagination;
+    const page = await parseInt(req.query.page || "0");
+    const pageSize = await parseInt(req.query.pageSize || "6");
 
+    let products = [];
+
+    if (pagination && pagination === "true") {
+      products = await Product.query().page(page, pageSize);
+    } else {
+      products = await Product.query();
+    }
+
+    // may need to do products.results
     if (!products) {
       return res.status(404).json({ error: "Products not found" });
     }
 
+    products.totalPages = Math.ceil(products.total / pageSize);
+
     return res.json(products);
   } catch (err) {
+    console.log(err);
     return res.status(500).json(err);
   }
 });
@@ -84,6 +99,23 @@ export const deleteProduct = asyncHandler(async (req, res) => {
   await Product.query().deleteById(productId);
 
   return res.json({ message: `Product: ${productName} successfully deleted` });
+});
+
+/**
+ * @desc    Delete multiple products by ID
+ * @route   DELETE /api/products/deleteMany
+ * @access  Private/Admin
+ */
+export const deleteMultipleProducts = asyncHandler(async (req, res) => {
+  const { ids } = req.body;
+  try {
+    await Product.query().delete().where("id", "IN", ids);
+    return res.json({
+      message: `Products successfully deleted`,
+    });
+  } catch (err) {
+    return res.status(500).json({ err: poop });
+  }
 });
 
 /**

@@ -63,6 +63,23 @@ export const createCategory = asyncHandler(async (req, res) => {
 });
 
 /**
+ * @desc    Delete multiple categories by ID
+ * @route   DELETE /api/categories/deleteMany
+ * @access  Private/Admin
+ */
+export const deleteMultipleCategories = asyncHandler(async (req, res) => {
+  const { ids } = req.body;
+  try {
+    await Category.query().delete().where("id", "IN", ids);
+    return res.json({
+      message: `Categories successfully deleted`,
+    });
+  } catch (err) {
+    return res.status(500).json({ err: poop });
+  }
+});
+
+/**
  * @desc    Delete a category by ID
  * @route   DELETE /api/categories/:id
  * @access  Private/Admin

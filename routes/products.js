@@ -5,6 +5,7 @@ import {
   getProductById,
   deleteProduct,
   updateProduct,
+  deleteMultipleProducts,
 } from "../controllers/product";
 import {
   createProductValidation,
@@ -14,6 +15,8 @@ import {
 const router = express.Router();
 
 router.route("/").get(getProducts).post(createProductValidation, createProduct);
+
+router.route("/deleteMany").delete(deleteMultipleProducts);
 
 router
   .route("/:id")
