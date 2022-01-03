@@ -12,7 +12,7 @@ Online store for Gaming PCs, peripherals and esports community for players in Om
 ---
 
 To run this project locally:
-* clone the repoistory on to your computer
+* Clone the repoistory on to your computer
 * Copy the .env.example to create a new .env file as below
 
 ```bash
