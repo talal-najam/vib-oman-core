@@ -30,7 +30,6 @@ export const getProducts = asyncHandler(async (req, res) => {
 
     return res.json(products);
   } catch (err) {
-    console.log(err);
     return res.status(500).json(err);
   }
 });

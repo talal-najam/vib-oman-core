@@ -1,5 +1,6 @@
 import { Model } from 'objection';
 
+// TODO: consider renaming table names to be singular
 class Order extends Model {
   static get tableName() {
     return "orders";
@@ -7,6 +8,7 @@ class Order extends Model {
 
   $beforeInsert() {
     this.created_at = new Date().toISOString();
+    this.date_purchased = new Date().toISOString();
   }
 
   $beforeUpdate() {
