@@ -4,4 +4,3 @@ node_modules
 # seeds/*
 !seeds/.gitkeep
 !migrations/.gitkeep
-TODO
