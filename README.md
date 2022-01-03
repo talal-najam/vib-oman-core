@@ -11,7 +11,7 @@ Online store for Gaming PCs, peripherals and esports community for players in Om
 
 ---
 
-To run this locally:
+To run this project locally:
 * clone the repoistory on to your computer
 * Copy the .env.example to create a new .env file as below
 
@@ -23,7 +23,7 @@ In the same project directory, you can run:
 
 ```bash
 # Install dependencies
-$ npm install
+$ npm install   
 ```
 
 Once packages are installed, start the server in watch mode:
